@@ -60,7 +60,7 @@ function _prng(root) {
   }
   else {
     try {
-      var randomBytes = require("randomBytes")
+      var randomBytes = require("randombytes")
       return function() {
         return randomBytes(2).readUInt16LE() / 0xFFFF
       }

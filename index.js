@@ -52,18 +52,17 @@ function _prng(root) {
 
   if (root) {
     try {
-      var crypto = root.crypto || root.msCrypto
       return function() {
-        return crypto.getRandomValues(new Uint16Array(1))[0] / 0xFFFF
+        return Math.random()
       }
     }
     catch (e) {}
   }
   else {
     try {
-      var crypto = require("crypto")
+      var randomBytes = require("randomBytes")
       return function() {
-        return crypto.randomBytes(2).readUInt16LE() / 0xFFFF
+        return randomBytes(2).readUInt16LE() / 0xFFFF
       }
     }
     catch (e) {}
